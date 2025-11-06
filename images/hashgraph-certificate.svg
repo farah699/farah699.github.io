@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="hashgraphGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7B3FF2;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4A90E2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#50C8F5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#hashgraphGradient)" rx="20"/>
+  <rect x="10" y="10" width="380" height="280" fill="rgba(255,255,255,0.1)" stroke="#FFF" stroke-width="1" rx="15"/>
+  
+  <!-- Title -->
+  <text x="200" y="50" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#FFF" text-anchor="middle">Certificate of Completion</text>
+  <text x="200" y="70" font-family="Arial, sans-serif" font-size="14" fill="#E0E0E0" text-anchor="middle">Hashgraph Developer Course</text>
+  
+  <!-- Content -->
+  <text x="200" y="120" font-family="Arial, sans-serif" font-size="16" fill="#FFF" text-anchor="middle">This credential certifies that Farah Hmida</text>
+  <text x="200" y="140" font-family="Arial, sans-serif" font-size="16" fill="#FFF" text-anchor="middle">has completed the Hashgraph Developer Course on 3-NOV-2025</text>
+  
+  <!-- Hashgraph Logo Placeholder -->
+  <circle cx="80" cy="220" r="25" fill="rgba(255,255,255,0.2)" stroke="#FFF" stroke-width="2"/>
+  <text x="80" y="225" font-family="Arial, sans-serif" font-size="10" fill="#FFF" text-anchor="middle">H</text>
+  
+  <!-- Footer -->
+  <text x="200" y="260" font-family="Arial, sans-serif" font-size="10" fill="#D0D0D0" text-anchor="middle">©2024 The Hashgraph Association | All Rights are reserved</text>
+</svg>

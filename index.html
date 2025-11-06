@@ -947,30 +947,18 @@
     /* Certifications */
     .certifications-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
 
     .certification-card {
       background: var(--bg-secondary);
       padding: 2rem;
-      border-radius: 1.5rem;
+      border-radius: 1rem;
       border: 1px solid var(--border);
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    .cert-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .cert-info {
-      flex: 1;
     }
 
     .certification-card::before {
@@ -1022,54 +1010,73 @@
     .certification-card h3 {
       color: var(--primary);
       font-size: 1.3rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 700;
     }
 
     .certification-provider {
       color: var(--secondary);
       font-weight: 600;
       margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      font-size: 0.9rem;
-    }
-
-    .cert-date {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-
-    .cert-id {
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      font-family: 'Courier New', monospace;
-      background: rgba(74, 144, 226, 0.1);
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.25rem;
-      display: inline-block;
-      margin-top: 0.25rem;
     }
 
     .certification-description {
       color: var(--text-secondary);
-      margin: 1rem 0;
+      margin-bottom: 1rem;
       line-height: 1.6;
-      font-size: 0.9rem;
-      padding: 1rem;
-      background: rgba(74, 144, 226, 0.05);
-      border-left: 3px solid var(--primary);
-      border-radius: 0 0.5rem 0.5rem 0;
-      font-style: italic;
+    }
+
+    .cert-image {
+      width: 120px;
+      height: 90px;
+      border-radius: 0.75rem;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.1),
+        0 2px 8px rgba(74, 144, 226, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, 
+        rgba(74, 144, 226, 0.1) 0%, 
+        transparent 50%,
+        rgba(236, 72, 153, 0.1) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .cert-image:hover {
+      transform: scale(1.08) rotateY(5deg);
+      border-color: var(--primary);
+      box-shadow: 
+        0 12px 30px rgba(74, 144, 226, 0.3),
+        0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .cert-image:hover::before {
+      opacity: 1;
+    }
+
+    .cert-content {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .cert-details {
+      flex: 1;
     }
 
     .certification-badge {
@@ -1702,170 +1709,140 @@
       <h2 class="section-title" data-fr="Certifications & Langues" data-en="Certifications & Languages">Certifications & Langues</h2>
       <div class="certifications-grid">
         
-        <!-- AWS Academy Graduate Certification -->
+        <!-- AWS Certification -->
         <div class="certification-card">
-          <div class="cert-header">
-            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #FF9900, #232F3E); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);">
-              <div style="color: white; font-weight: bold; font-size: 0.7rem; text-align: center; line-height: 1.2;">
-                <div style="font-size: 1rem;">AWS</div>
-                <div style="font-size: 0.5rem;">academy</div>
-                <div style="font-size: 0.6rem;">graduate</div>
+          <div class="cert-content">
+            <img src="images/aws-certificate.svg" alt="AWS Certificate" class="cert-image">
+            <div class="cert-details">
+              <div class="cert-header">
+                <div style="width: 80px; height: 80px; background: #232F3E; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                  <div style="color: #FF9900; font-weight: bold; font-size: 0.8rem; text-align: center; line-height: 1.2;">
+                    AWS<br>
+                    <span style="font-size: 0.6rem;">Certified</span><br>
+                    <span style="font-size: 0.5rem;">Cloud Practitioner</span>
+                  </div>
+                </div>
+                <div class="cert-info">
+                  <h3 data-fr="AWS Certified Cloud Practitioner" data-en="AWS Certified Cloud Practitioner">AWS Certified Cloud Practitioner</h3>
+                  <div class="certification-provider" data-fr="Amazon Web Services (AWS)" data-en="Amazon Web Services (AWS)">Amazon Web Services (AWS)</div>
+                  <div class="cert-date" data-fr="Octobre 2024" data-en="October 2024">Octobre 2024</div>
+                </div>
               </div>
-            </div>
-            <div class="cert-info">
-              <h3 data-fr="AWS Academy Graduate - Cloud Foundations" data-en="AWS Academy Graduate - Cloud Foundations">AWS Academy Graduate - Cloud Foundations</h3>
-              <div class="certification-provider" data-fr="Amazon Web Services (AWS)" data-en="Amazon Web Services (AWS)">Amazon Web Services (AWS)</div>
-              <div class="cert-date" data-fr="11 Mars 2025 - 20 heures" data-en="March 11, 2025 - 20 hours">11 Mars 2025 - 20 heures</div>
-              <div class="cert-id" style="font-size: 0.8rem; color: var(--text-muted);">Badge Digital disponible</div>
             </div>
           </div>
           
           <div class="cert-skills">
             <span class="cert-skill">
               <i class="fas fa-cloud"></i>
-              <span data-fr="Cloud Computing Fundamentals" data-en="Cloud Computing Fundamentals">Cloud Computing Fundamentals</span>
+              <span data-fr="Cloud Computing" data-en="Cloud Computing">Cloud Computing</span>
             </span>
             <span class="cert-skill">
               <i class="fas fa-server"></i>
-              <span data-fr="AWS Core Services" data-en="AWS Core Services">AWS Core Services</span>
+              <span data-fr="AWS Services (EC2, S3, Lambda)" data-en="AWS Services (EC2, S3, Lambda)">AWS Services (EC2, S3, Lambda)</span>
             </span>
             <span class="cert-skill">
               <i class="fas fa-shield-alt"></i>
-              <span data-fr="Security & Compliance" data-en="Security & Compliance">Security & Compliance</span>
+              <span data-fr="Security & Best Practices" data-en="Security & Best Practices">Security & Best Practices</span>
             </span>
             <span class="cert-skill">
-              <i class="fas fa-calculator"></i>
-              <span data-fr="Pricing & Billing" data-en="Pricing & Billing">Pricing & Billing</span>
+              <i class="fas fa-expand-arrows-alt"></i>
+              <span data-fr="Scalable Solutions" data-en="Scalable Solutions">Scalable Solutions</span>
             </span>
           </div>
           
-          <a href="https://www.credly.com/go/x5p1Av4k" target="_blank" class="certification-badge">
+          <a href="https://aws.amazon.com/certification/certified-cloud-practitioner/" target="_blank" class="certification-badge">
             <i class="fas fa-external-link-alt"></i>
-            <span data-fr="Voir le badge digital" data-en="View Digital Badge">Voir le badge digital</span>
+            <span data-fr="Voir le certificat" data-en="View Credential">Voir le certificat</span>
           </a>
         </div>
 
         <!-- Hashgraph Developer -->
         <div class="certification-card">
-          <div class="cert-header">
-            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4A90E2 0%, #9B59B6 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);">
-              <div style="color: white; font-weight: bold; font-size: 0.6rem; text-align: center; line-height: 1.1;">
-                <div style="font-size: 0.8rem; margin-bottom: 2px;">Certificate of</div>
-                <div style="font-size: 0.7rem; margin-bottom: 1px;">Completion</div>
-                <div style="font-size: 0.5rem;">Hashgraph Developer</div>
+          <div class="cert-content">
+            <img src="images/hashgraph-certificate.svg" alt="Hashgraph Certificate" class="cert-image">
+            <div class="cert-details">
+              <div class="cert-header">
+                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative;">
+                  <div style="width: 60px; height: 60px; border: 2px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <div style="color: white; font-weight: bold; font-size: 1.5rem;">H</div>
+                  </div>
+                </div>
+                <div class="cert-info">
+                  <h3 data-fr="Attendance Hashgraph Developer" data-en="Attendance Hashgraph Developer">Attendance Hashgraph Developer</h3>
+                  <div class="certification-provider" data-fr="The Hashgraph Association" data-en="The Hashgraph Association">The Hashgraph Association</div>
+                  <div class="cert-date" data-fr="Octobre 2025 - Novembre 2025" data-en="October 2025 - November 2025">Octobre 2025 - Novembre 2025</div>
+                  <div class="cert-id">ID: 091f5fa-c8e3-4203-a9ba-aba564f1b8f3</div>
+                </div>
               </div>
-            </div>
-            <div class="cert-info">
-              <h3 data-fr="Hashgraph Developer Course" data-en="Hashgraph Developer Course">Hashgraph Developer Course</h3>
-              <div class="certification-provider" data-fr="The Hashgraph Association" data-en="The Hashgraph Association">The Hashgraph Association</div>
-              <div class="cert-date" data-fr="3 Novembre 2025" data-en="November 3, 2025">3 Novembre 2025</div>
-              <div class="cert-id" style="font-size: 0.8rem; color: var(--text-muted);">Farah Hmida - Certified</div>
             </div>
           </div>
           
           <div class="cert-skills">
             <span class="cert-skill">
               <i class="fas fa-link"></i>
-              <span data-fr="Hedera Hashgraph" data-en="Hedera Hashgraph">Hedera Hashgraph</span>
+              <span data-fr="Blockchain" data-en="Blockchain">Blockchain</span>
             </span>
             <span class="cert-skill">
               <i class="fas fa-code-branch"></i>
-              <span data-fr="DLT Development" data-en="DLT Development">DLT Development</span>
+              <span data-fr="Hashgraph Development" data-en="Hashgraph Development">Hashgraph Development</span>
             </span>
             <span class="cert-skill">
               <i class="fas fa-database"></i>
-              <span data-fr="Distributed Ledger Technology" data-en="Distributed Ledger Technology">Distributed Ledger Technology</span>
+              <span data-fr="DLT (Distributed Ledger)" data-en="DLT (Distributed Ledger)">DLT (Distributed Ledger)</span>
             </span>
             <span class="cert-skill">
               <i class="fas fa-file-contract"></i>
-              <span data-fr="Smart Contracts 2.0" data-en="Smart Contracts 2.0">Smart Contracts 2.0</span>
+              <span data-fr="Smart Contracts" data-en="Smart Contracts">Smart Contracts</span>
             </span>
           </div>
           
-          <div class="certification-description" data-fr="Formation complète sur le développement d'applications décentralisées avec Hedera Hashgraph" data-en="Complete training on developing decentralized applications with Hedera Hashgraph">
-            Formation complète sur le développement d'applications décentralisées avec Hedera Hashgraph
-          </div>
-          
-          <a href="https://hashgraph.com/learning" target="_blank" class="certification-badge">
+          <a href="#" class="certification-badge">
             <i class="fas fa-certificate"></i>
-            <span data-fr="Voir le certificat" data-en="View Certificate">Voir le certificat</span>
-          </a>
-        </div>
-
-        <!-- Apollo Graph Developer -->
-        <div class="certification-card">
-          <div class="cert-header">
-            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #1B4F72, #2E86AB); border-radius: 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(46, 134, 171, 0.3);">
-              <div style="color: #F39C12; font-weight: bold; font-size: 0.6rem; text-align: center; line-height: 1.1;">
-                <div style="font-size: 1.2rem; margin-bottom: 2px;">🏆</div>
-                <div style="font-size: 0.8rem; color: white;">APOLLO</div>
-                <div style="font-size: 0.5rem; color: #F39C12;">CERTIFIED</div>
-              </div>
-            </div>
-            <div class="cert-info">
-              <h3 data-fr="Apollo Graph Developer - Associate" data-en="Apollo Graph Developer - Associate">Apollo Graph Developer - Associate</h3>
-              <div class="certification-provider" data-fr="Apollo GraphQL" data-en="Apollo GraphQL">Apollo GraphQL</div>
-              <div class="cert-date" data-fr="28 Avril 2025" data-en="April 28, 2025">28 Avril 2025</div>
-              <div class="cert-id" style="font-size: 0.8rem; color: var(--text-muted);">ID: abc2cf7f-5e36-4e5e-ab96-1363b9ab</div>
-            </div>
-          </div>
-          
-          <div class="cert-skills">
-            <span class="cert-skill">
-              <i class="fas fa-project-diagram"></i>
-              <span data-fr="GraphQL" data-en="GraphQL">GraphQL</span>
-            </span>
-            <span class="cert-skill">
-              <i class="fas fa-server"></i>
-              <span data-fr="Apollo Server 4" data-en="Apollo Server 4">Apollo Server 4</span>
-            </span>
-            <span class="cert-skill">
-              <i class="fas fa-laptop-code"></i>
-              <span data-fr="Apollo Client 3" data-en="Apollo Client 3">Apollo Client 3</span>
-            </span>
-            <span class="cert-skill">
-              <i class="fas fa-database"></i>
-              <span data-fr="Schema Design" data-en="Schema Design">Schema Design</span>
-            </span>
-          </div>
-          
-          <div class="certification-description" data-fr="Certification avancée en développement GraphQL avec Apollo. Maîtrise des outils Apollo pour créer des APIs robustes et des applications front-end performantes." data-en="Advanced certification in GraphQL development with Apollo. Mastery of Apollo tools for building robust APIs and performant front-end applications.">
-            Certification avancée en développement GraphQL avec Apollo. Maîtrise des outils Apollo pour créer des APIs robustes et des applications front-end performantes.
-          </div>
-          
-          <a href="https://www.apollographql.com/tutorials/certifications" target="_blank" class="certification-badge">
-            <i class="fas fa-external-link-alt"></i>
-            <span data-fr="Voir le certificat" data-en="View Certificate">Voir le certificat</span>
+            <span data-fr="Voir le certificat" data-en="View Credential">Voir le certificat</span>
           </a>
         </div>
 
         <!-- Languages -->
         <div class="certification-card">
-          <div class="cert-header">
-            <div style="width: 80px; height: 80px; background: var(--bg-card); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;">
-              <i class="fas fa-language" style="font-size: 2rem; color: var(--primary);"></i>
-            </div>
-            <div class="cert-info">
-              <h3 data-fr="Langues" data-en="Languages">Langues</h3>
-              <div class="certification-provider" data-fr="Compétences linguistiques" data-en="Language Skills">Compétences linguistiques</div>
+          <div class="cert-content">
+            <img src="images/apollo-certificate.svg" alt="Apollo GraphQL Certificate" class="cert-image">
+            <div class="cert-details">
+              <div class="cert-header">
+                <div style="width: 80px; height: 80px; background: var(--bg-card); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                  <i class="fas fa-language" style="font-size: 2rem; color: var(--primary);"></i>
+                </div>
+                <div class="cert-info">
+                  <h3 data-fr="Apollo GraphQL Developer" data-en="Apollo GraphQL Developer">Apollo GraphQL Developer</h3>
+                  <div class="certification-provider" data-fr="Apollo GraphQL" data-en="Apollo GraphQL">Apollo GraphQL</div>
+                  <div class="cert-date" data-fr="Avril 2025" data-en="April 2025">Avril 2025</div>
+                </div>
+              </div>
             </div>
           </div>
           
-          <div class="certification-description" data-fr="Maîtrise multilingue pour communication internationale" data-en="Multilingual proficiency for international communication">
-            Maîtrise multilingue pour communication internationale
+          <div class="certification-description" data-fr="Expertise en développement GraphQL avec Apollo pour APIs modernes" data-en="GraphQL development expertise with Apollo for modern APIs">
+            Expertise en développement GraphQL avec Apollo pour APIs modernes
           </div>
           
           <div class="cert-skills">
             <span class="cert-skill">
-              🇫🇷 <span data-fr="Français - Natif" data-en="French - Native">Français - Natif</span>
+              <i class="fas fa-project-diagram"></i>
+              <span data-fr="GraphQL Schema Design" data-en="GraphQL Schema Design">GraphQL Schema Design</span>
             </span>
             <span class="cert-skill">
-              🇹🇳 <span data-fr="Arabe - Natif" data-en="Arabic - Native">Arabe - Natif</span>
+              <i class="fas fa-server"></i>
+              <span data-fr="Apollo Server" data-en="Apollo Server">Apollo Server</span>
             </span>
             <span class="cert-skill">
-              🇬🇧 <span data-fr="Anglais - Avancé" data-en="English - Advanced">Anglais - Avancé</span>
+              <i class="fas fa-desktop"></i>
+              <span data-fr="Apollo Client" data-en="Apollo Client">Apollo Client</span>
             </span>
           </div>
+          
+          <a href="#" class="certification-badge">
+            <i class="fas fa-external-link-alt"></i>
+            <span data-fr="Voir le certificat" data-en="View Credential">Voir le certificat</span>
+          </a>
         </div>
       </div>
     </section>
