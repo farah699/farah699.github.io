@@ -550,6 +550,126 @@
       transform: translateY(-2px);
     }
 
+    /* Language Selector */
+    .language-selector {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      border: 1px solid var(--border);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .lang-btn:hover {
+      color: var(--primary);
+      background: var(--bg-card);
+    }
+
+    .lang-btn.active {
+      color: white;
+      background: var(--primary);
+    }
+
+    /* Animated Text */
+    .animated-text {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      min-height: 1.5em;
+    }
+
+    .typewriter {
+      overflow: hidden;
+      border-right: 2px solid var(--primary);
+      white-space: nowrap;
+      margin: 0 auto;
+      animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: var(--primary); }
+    }
+
+    /* Certification Images */
+    .cert-image {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+      border-radius: 0.5rem;
+    }
+
+    .cert-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .cert-info h3 {
+      margin: 0;
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+
+    .cert-date {
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+    }
+
+    .cert-id {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-family: monospace;
+      margin-top: 0.25rem;
+    }
+
+    .cert-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .cert-skill {
+      background: var(--bg-card);
+      color: var(--accent);
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    /* Hidden class for language switching */
+    .hidden {
+      display: none !important;
+    }
+
     /* Footer */
     footer {
       background: var(--bg-secondary);
@@ -640,17 +760,23 @@
   </style>
 </head>
 <body>
+  <!-- Language Selector -->
+  <div class="language-selector">
+    <button class="lang-btn active" onclick="switchLanguage('fr')" data-lang="fr">FR</button>
+    <button class="lang-btn" onclick="switchLanguage('en')" data-lang="en">EN</button>
+  </div>
+
   <!-- Navigation -->
   <nav>
     <div class="nav-container">
       <div class="logo">Farah HMIDA</div>
       <ul class="nav-links">
-        <li><a href="#about">À propos</a></li>
-        <li><a href="#education">Formation</a></li>
-        <li><a href="#experience">Expérience</a></li>
-        <li><a href="#projects">Projets</a></li>
-        <li><a href="#skills">Compétences</a></li>
-        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#about" data-fr="À propos" data-en="About">À propos</a></li>
+        <li><a href="#education" data-fr="Formation" data-en="Education">Formation</a></li>
+        <li><a href="#experience" data-fr="Expérience" data-en="Experience">Expérience</a></li>
+        <li><a href="#projects" data-fr="Projets" data-en="Projects">Projets</a></li>
+        <li><a href="#skills" data-fr="Compétences" data-en="Skills">Compétences</a></li>
+        <li><a href="#certifications" data-fr="Certifications" data-en="Certifications">Certifications</a></li>
       </ul>
     </div>
   </nav>
@@ -666,8 +792,14 @@
       </div>
       
       <h1>Farah HMIDA</h1>
-      <p class="subtitle">Développeuse Full Stack | IA & DevOps</p>
-      <p class="location">
+      <div class="animated-text">
+        <p class="typewriter" id="animated-subtitle" 
+           data-fr="Développeuse Full Stack | IA & DevOps" 
+           data-en="Full Stack Developer | AI & DevOps">
+          Développeuse Full Stack | IA & DevOps
+        </p>
+      </div>
+      <p class="location" data-fr="Ezzahra, Tunisie" data-en="Ezzahra, Tunisia">
         <i class="fas fa-map-marker-alt"></i>
         Ezzahra, Tunisie
       </p>
@@ -692,8 +824,15 @@
       </div>
       
       <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-        <a href="#about" class="cta-button">Découvrir mon profil</a>
-        <a href="cv-farah-hmida.pdf" download class="cta-button" style="background: linear-gradient(135deg, var(--secondary), var(--accent));">
+        <a href="#about" class="cta-button" 
+           data-fr="Découvrir mon profil" 
+           data-en="Discover my profile">
+          Découvrir mon profil
+        </a>
+        <a href="cv-farah-hmida.pdf" download class="cta-button" 
+           style="background: linear-gradient(135deg, var(--secondary), var(--accent));"
+           data-fr="Télécharger CV" 
+           data-en="Download CV">
           <i class="fas fa-download"></i>
           Télécharger CV
         </a>
@@ -704,33 +843,33 @@
   <div class="container">
     <!-- About Section -->
     <section id="about">
-      <h2 class="section-title">À propos</h2>
+      <h2 class="section-title" data-fr="À propos" data-en="About Me">À propos</h2>
       <div class="about-content">
-        <p>Étudiante en cycle d'ingénieur en informatique à ESPRIT, spécialisée en développement Full Stack avec un fort intérêt pour l'intelligence artificielle et le DevOps. Diplômée en Technologies de l'Information et de la Communication, je suis passionnée par l'IA, le Machine Learning et l'innovation technologique.</p>
-        <p>Fort d'une expérience variée dans le développement d'applications web, mobiles et de solutions IA, je maîtrise l'ensemble du cycle de développement, de la conception à la mise en production avec une approche DevOps moderne.</p>
+        <p data-fr="Étudiante en cycle d'ingénieur en informatique à ESPRIT, spécialisée en développement Full Stack avec un fort intérêt pour l'intelligence artificielle et le DevOps. Diplômée en Technologies de l'Information et de la Communication, je suis passionnée par l'IA, le Machine Learning et l'innovation technologique." data-en="Computer Engineering student at ESPRIT, specialized in Full Stack development with a strong interest in artificial intelligence and DevOps. Graduate in Information and Communication Technologies, I am passionate about AI, Machine Learning and technological innovation.">Étudiante en cycle d'ingénieur en informatique à ESPRIT, spécialisée en développement Full Stack avec un fort intérêt pour l'intelligence artificielle et le DevOps. Diplômée en Technologies de l'Information et de la Communication, je suis passionnée par l'IA, le Machine Learning et l'innovation technologique.</p>
+        <p data-fr="Fort d'une expérience variée dans le développement d'applications web, mobiles et de solutions IA, je maîtrise l'ensemble du cycle de développement, de la conception à la mise en production avec une approche DevOps moderne." data-en="With diverse experience in web, mobile and AI solution development, I master the entire development cycle, from design to production deployment with a modern DevOps approach.">Fort d'une expérience variée dans le développement d'applications web, mobiles et de solutions IA, je maîtrise l'ensemble du cycle de développement, de la conception à la mise en production avec une approche DevOps moderne.</p>
       </div>
     </section>
 
     <!-- Education Section -->
     <section id="education">
-      <h2 class="section-title">Formation</h2>
+      <h2 class="section-title" data-fr="Formation" data-en="Education">Formation</h2>
       <div class="education-grid">
         <div class="education-item">
-          <h3>Cycle d'Ingénieur en Informatique</h3>
-          <div class="institution">École Supérieure Privée d'Ingénierie et de Technologie - ESPRIT</div>
-          <div class="date">2023 – Présent | Tunis, Tunisie</div>
+          <h3 data-fr="Cycle d'Ingénieur en Informatique" data-en="Computer Engineering Degree">Cycle d'Ingénieur en Informatique</h3>
+          <div class="institution" data-fr="École Supérieure Privée d'Ingénierie et de Technologie - ESPRIT" data-en="Private Higher School of Engineering and Technology - ESPRIT">École Supérieure Privée d'Ingénierie et de Technologie - ESPRIT</div>
+          <div class="date" data-fr="2023 – Présent | Tunis, Tunisie" data-en="2023 – Present | Tunis, Tunisia">2023 – Présent | Tunis, Tunisie</div>
         </div>
         <div class="education-item">
-          <h3>Licence en Technologies de l'Information et de la Communication</h3>
-          <div class="institution">Institut Supérieur des Technologies de l'Information et de la Communication - ISTIC</div>
-          <div class="date">2020 – 2023 | Tunis, Tunisie</div>
+          <h3 data-fr="Licence en Technologies de l'Information et de la Communication" data-en="Bachelor in Information and Communication Technologies">Licence en Technologies de l'Information et de la Communication</h3>
+          <div class="institution" data-fr="Institut Supérieur des Technologies de l'Information et de la Communication - ISTIC" data-en="Higher Institute of Information and Communication Technologies - ISTIC">Institut Supérieur des Technologies de l'Information et de la Communication - ISTIC</div>
+          <div class="date" data-fr="2020 – 2023 | Tunis, Tunisie" data-en="2020 – 2023 | Tunis, Tunisia">2020 – 2023 | Tunis, Tunisie</div>
         </div>
       </div>
     </section>
 
     <!-- Experience Section -->
     <section id="experience">
-      <h2 class="section-title">Expérience Professionnelle</h2>
+      <h2 class="section-title" data-fr="Expérience Professionnelle" data-en="Professional Experience">Expérience Professionnelle</h2>
       <div class="experience-grid">
         <div class="experience-item">
           <div class="experience-header">
@@ -816,7 +955,7 @@
 
     <!-- Projects Section -->
     <section id="projects">
-      <h2 class="section-title">Projets Académiques</h2>
+      <h2 class="section-title" data-fr="Projets Académiques" data-en="Academic Projects">Projets Académiques</h2>
       <div class="projects-grid">
         <div class="project-card">
           <h3>EduIA – Plateforme IA pédagogique</h3>
@@ -924,7 +1063,7 @@
 
     <!-- Skills Section -->
     <section id="skills">
-      <h2 class="section-title">Compétences Techniques</h2>
+      <h2 class="section-title" data-fr="Compétences Techniques" data-en="Technical Skills">Compétences Techniques</h2>
       <div class="skills-grid">
         <div class="skill-category">
           <h3><i class="fas fa-code"></i> Langages</h3>
@@ -1007,56 +1146,118 @@
 
     <!-- Certifications Section -->
     <section id="certifications">
-      <h2 class="section-title">Certifications & Langues</h2>
+      <h2 class="section-title" data-fr="Certifications & Langues" data-en="Certifications & Languages">Certifications & Langues</h2>
       <div class="certifications-grid">
+        
+        <!-- AWS Certification -->
         <div class="certification-card">
-          <h3><i class="fas fa-cloud"></i> AWS Cloud Practitioner</h3>
-          <div class="certification-provider">Amazon Web Services</div>
-          <p class="certification-description">
-            Certification fondamentale sur les services AWS, l'architecture cloud et les bonnes pratiques de sécurité.
-          </p>
-          <a href="#" class="certification-badge">
-            <i class="fas fa-certificate"></i>
-            Voir le certificat
+          <div class="cert-header">
+            <div style="width: 80px; height: 80px; background: #232F3E; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;">
+              <div style="color: #FF9900; font-weight: bold; font-size: 0.8rem; text-align: center; line-height: 1.2;">
+                AWS<br>
+                <span style="font-size: 0.6rem;">Certified</span><br>
+                <span style="font-size: 0.5rem;">Cloud Practitioner</span>
+              </div>
+            </div>
+            <div class="cert-info">
+              <h3 data-fr="AWS Certified Cloud Practitioner" data-en="AWS Certified Cloud Practitioner">AWS Certified Cloud Practitioner</h3>
+              <div class="certification-provider" data-fr="Amazon Web Services (AWS)" data-en="Amazon Web Services (AWS)">Amazon Web Services (AWS)</div>
+              <div class="cert-date" data-fr="Octobre 2024" data-en="October 2024">Octobre 2024</div>
+            </div>
+          </div>
+          
+          <div class="cert-skills">
+            <span class="cert-skill">
+              <i class="fas fa-cloud"></i>
+              <span data-fr="Cloud Computing" data-en="Cloud Computing">Cloud Computing</span>
+            </span>
+            <span class="cert-skill">
+              <i class="fas fa-server"></i>
+              <span data-fr="AWS Services (EC2, S3, Lambda)" data-en="AWS Services (EC2, S3, Lambda)">AWS Services (EC2, S3, Lambda)</span>
+            </span>
+            <span class="cert-skill">
+              <i class="fas fa-shield-alt"></i>
+              <span data-fr="Security & Best Practices" data-en="Security & Best Practices">Security & Best Practices</span>
+            </span>
+            <span class="cert-skill">
+              <i class="fas fa-expand-arrows-alt"></i>
+              <span data-fr="Scalable Solutions" data-en="Scalable Solutions">Scalable Solutions</span>
+            </span>
+          </div>
+          
+          <a href="https://aws.amazon.com/certification/certified-cloud-practitioner/" target="_blank" class="certification-badge">
+            <i class="fas fa-external-link-alt"></i>
+            <span data-fr="Voir le certificat" data-en="View Credential">Voir le certificat</span>
           </a>
         </div>
 
+        <!-- Hashgraph Developer -->
         <div class="certification-card">
-          <h3><i class="fas fa-link"></i> Blockchain Fundamentals</h3>
-          <div class="certification-provider">Plateforme de certification</div>
-          <p class="certification-description">
-            Compréhension des concepts fondamentaux de la blockchain, des cryptomonnaies et des technologies distribuées.
-          </p>
+          <div class="cert-header">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative;">
+              <div style="width: 60px; height: 60px; border: 2px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <div style="color: white; font-weight: bold; font-size: 1.5rem;">H</div>
+              </div>
+            </div>
+            <div class="cert-info">
+              <h3 data-fr="Attendance Hashgraph Developer" data-en="Attendance Hashgraph Developer">Attendance Hashgraph Developer</h3>
+              <div class="certification-provider" data-fr="The Hashgraph Association" data-en="The Hashgraph Association">The Hashgraph Association</div>
+              <div class="cert-date" data-fr="Octobre 2025 - Novembre 2025" data-en="October 2025 - November 2025">Octobre 2025 - Novembre 2025</div>
+              <div class="cert-id">ID: 091f5fa-c8e3-4203-a9ba-aba564f1b8f3</div>
+            </div>
+          </div>
+          
+          <div class="cert-skills">
+            <span class="cert-skill">
+              <i class="fas fa-link"></i>
+              <span data-fr="Blockchain" data-en="Blockchain">Blockchain</span>
+            </span>
+            <span class="cert-skill">
+              <i class="fas fa-code-branch"></i>
+              <span data-fr="Hashgraph Development" data-en="Hashgraph Development">Hashgraph Development</span>
+            </span>
+            <span class="cert-skill">
+              <i class="fas fa-database"></i>
+              <span data-fr="DLT (Distributed Ledger)" data-en="DLT (Distributed Ledger)">DLT (Distributed Ledger)</span>
+            </span>
+            <span class="cert-skill">
+              <i class="fas fa-file-contract"></i>
+              <span data-fr="Smart Contracts" data-en="Smart Contracts">Smart Contracts</span>
+            </span>
+          </div>
+          
           <a href="#" class="certification-badge">
             <i class="fas fa-certificate"></i>
-            Voir le certificat
+            <span data-fr="Voir le certificat" data-en="View Credential">Voir le certificat</span>
           </a>
         </div>
 
+        <!-- Languages -->
         <div class="certification-card">
-          <h3><i class="fas fa-project-diagram"></i> Graph Technologies</h3>
-          <div class="certification-provider">Neo4j / GraphQL</div>
-          <p class="certification-description">
-            Maîtrise des bases de données graphiques et des technologies de requête GraphQL pour des applications modernes.
-          </p>
-          <a href="#" class="certification-badge">
-            <i class="fas fa-certificate"></i>
-            Voir le certificat
-          </a>
-        </div>
-
-        <div class="certification-card">
-          <h3><i class="fas fa-language"></i> Langues</h3>
-          <div class="certification-provider">Compétences linguistiques</div>
-          <p class="certification-description">
-            <strong>Français :</strong> Langue maternelle<br>
-            <strong>Arabe :</strong> Langue maternelle<br>
-            <strong>Anglais :</strong> Niveau avancé (technique)
-          </p>
-          <div style="margin-top: 1rem;">
-            <span style="background: var(--bg-card); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem; margin-right: 0.5rem;">Français</span>
-            <span style="background: var(--bg-card); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem; margin-right: 0.5rem;">Arabe</span>
-            <span style="background: var(--bg-card); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem;">English</span>
+          <div class="cert-header">
+            <div style="width: 80px; height: 80px; background: var(--bg-card); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;">
+              <i class="fas fa-language" style="font-size: 2rem; color: var(--primary);"></i>
+            </div>
+            <div class="cert-info">
+              <h3 data-fr="Langues" data-en="Languages">Langues</h3>
+              <div class="certification-provider" data-fr="Compétences linguistiques" data-en="Language Skills">Compétences linguistiques</div>
+            </div>
+          </div>
+          
+          <div class="certification-description" data-fr="Maîtrise multilingue pour communication internationale" data-en="Multilingual proficiency for international communication">
+            Maîtrise multilingue pour communication internationale
+          </div>
+          
+          <div class="cert-skills">
+            <span class="cert-skill">
+              🇫🇷 <span data-fr="Français - Natif" data-en="French - Native">Français - Natif</span>
+            </span>
+            <span class="cert-skill">
+              🇹🇳 <span data-fr="Arabe - Natif" data-en="Arabic - Native">Arabe - Natif</span>
+            </span>
+            <span class="cert-skill">
+              🇬🇧 <span data-fr="Anglais - Avancé" data-en="English - Advanced">Anglais - Avancé</span>
+            </span>
           </div>
         </div>
       </div>
@@ -1076,6 +1277,55 @@
   </footer>
 
   <script>
+    // Language switching functionality
+    let currentLang = 'fr';
+    
+    function switchLanguage(lang) {
+      currentLang = lang;
+      
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+      
+      // Update all elements with data attributes
+      document.querySelectorAll('[data-fr][data-en]').forEach(element => {
+        const text = element.getAttribute(`data-${lang}`);
+        if (text) {
+          element.textContent = text;
+        }
+      });
+      
+      // Special handling for animated subtitle
+      const subtitle = document.getElementById('animated-subtitle');
+      if (subtitle) {
+        const newText = subtitle.getAttribute(`data-${lang}`);
+        restartTypewriter(subtitle, newText);
+      }
+    }
+    
+    // Typewriter animation
+    function restartTypewriter(element, newText) {
+      element.classList.remove('typewriter');
+      element.textContent = '';
+      
+      setTimeout(() => {
+        element.textContent = newText;
+        element.classList.add('typewriter');
+      }, 100);
+    }
+    
+    // Initialize typewriter animation on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const subtitle = document.getElementById('animated-subtitle');
+      if (subtitle) {
+        setTimeout(() => {
+          subtitle.classList.add('typewriter');
+        }, 1000);
+      }
+    });
+
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -1105,7 +1355,7 @@
     }, observerOptions);
 
     // Observe all sections
-    document.querySelectorAll('section, .project-card, .experience-item, .skill-category').forEach(el => {
+    document.querySelectorAll('section, .project-card, .experience-item, .skill-category, .certification-card').forEach(el => {
       observer.observe(el);
     });
 
