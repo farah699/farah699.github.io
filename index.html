@@ -127,6 +127,45 @@
     .hero-content {
       position: relative;
       z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .profile-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 4px solid var(--primary);
+      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+      margin-bottom: 1rem;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.05);
+    }
+
+    .profile-placeholder {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 4px solid var(--primary);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: white;
+      margin-bottom: 1rem;
+      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-placeholder:hover {
+      transform: scale(1.05);
     }
 
     .hero h1 {
@@ -438,6 +477,79 @@
       transform: scale(1.05);
     }
 
+    /* Certifications */
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .certification-card {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .certification-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--secondary));
+    }
+
+    .certification-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .certification-card h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .certification-provider {
+      color: var(--secondary);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .certification-description {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .certification-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-card);
+      color: var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .certification-badge:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+    }
+
     /* Footer */
     footer {
       background: var(--bg-secondary);
@@ -498,6 +610,16 @@
       .skills-grid {
         grid-template-columns: 1fr;
       }
+      
+      .certifications-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .profile-image,
+      .profile-placeholder {
+        width: 150px;
+        height: 150px;
+      }
     }
 
     /* Animations */
@@ -528,6 +650,7 @@
         <li><a href="#experience">Expérience</a></li>
         <li><a href="#projects">Projets</a></li>
         <li><a href="#skills">Compétences</a></li>
+        <li><a href="#certifications">Certifications</a></li>
       </ul>
     </div>
   </nav>
@@ -535,6 +658,13 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
+      <!-- Photo de profil - Remplacez "your-photo.jpg" par le chemin vers votre photo -->
+      <!-- <img src="your-photo.jpg" alt="Farah HMIDA" class="profile-image"> -->
+      <!-- Placeholder temporaire - Supprimez cette div et décommentez la ligne ci-dessus quand vous aurez ajouté votre photo -->
+      <div class="profile-placeholder">
+        <i class="fas fa-user"></i>
+      </div>
+      
       <h1>Farah HMIDA</h1>
       <p class="subtitle">Développeuse Full Stack | IA & DevOps</p>
       <p class="location">
@@ -561,7 +691,13 @@
         </a>
       </div>
       
-      <a href="#about" class="cta-button">Découvrir mon profil</a>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+        <a href="#about" class="cta-button">Découvrir mon profil</a>
+        <a href="cv-farah-hmida.pdf" download class="cta-button" style="background: linear-gradient(135deg, var(--secondary), var(--accent));">
+          <i class="fas fa-download"></i>
+          Télécharger CV
+        </a>
+      </div>
     </div>
   </section>
 
@@ -864,6 +1000,63 @@
             <span class="skill-item">Agile</span>
             <span class="skill-item">Scrum</span>
             <span class="skill-item">Jira</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+      <h2 class="section-title">Certifications & Langues</h2>
+      <div class="certifications-grid">
+        <div class="certification-card">
+          <h3><i class="fas fa-cloud"></i> AWS Cloud Practitioner</h3>
+          <div class="certification-provider">Amazon Web Services</div>
+          <p class="certification-description">
+            Certification fondamentale sur les services AWS, l'architecture cloud et les bonnes pratiques de sécurité.
+          </p>
+          <a href="#" class="certification-badge">
+            <i class="fas fa-certificate"></i>
+            Voir le certificat
+          </a>
+        </div>
+
+        <div class="certification-card">
+          <h3><i class="fas fa-link"></i> Blockchain Fundamentals</h3>
+          <div class="certification-provider">Plateforme de certification</div>
+          <p class="certification-description">
+            Compréhension des concepts fondamentaux de la blockchain, des cryptomonnaies et des technologies distribuées.
+          </p>
+          <a href="#" class="certification-badge">
+            <i class="fas fa-certificate"></i>
+            Voir le certificat
+          </a>
+        </div>
+
+        <div class="certification-card">
+          <h3><i class="fas fa-project-diagram"></i> Graph Technologies</h3>
+          <div class="certification-provider">Neo4j / GraphQL</div>
+          <p class="certification-description">
+            Maîtrise des bases de données graphiques et des technologies de requête GraphQL pour des applications modernes.
+          </p>
+          <a href="#" class="certification-badge">
+            <i class="fas fa-certificate"></i>
+            Voir le certificat
+          </a>
+        </div>
+
+        <div class="certification-card">
+          <h3><i class="fas fa-language"></i> Langues</h3>
+          <div class="certification-provider">Compétences linguistiques</div>
+          <p class="certification-description">
+            <strong>Français :</strong> Langue maternelle<br>
+            <strong>Arabe :</strong> Langue maternelle<br>
+            <strong>Anglais :</strong> Niveau avancé (technique)
+          </p>
+          <div style="margin-top: 1rem;">
+            <span style="background: var(--bg-card); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem; margin-right: 0.5rem;">Français</span>
+            <span style="background: var(--bg-card); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem; margin-right: 0.5rem;">Arabe</span>
+            <span style="background: var(--bg-card); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem;">English</span>
           </div>
         </div>
       </div>
