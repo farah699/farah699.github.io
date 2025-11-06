@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <defs>
+    <!-- Gradient de fond -->
+    <radialGradient id="bgGradient" cx="50%" cy="30%" r="80%">
+      <stop offset="0%" style="stop-color:#F8F8F8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0E0E0;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Gradient pour la peau -->
+    <linearGradient id="skinTone" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5D5AE;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F0C9A0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E8B892;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradient pour les cheveux -->
+    <linearGradient id="hairColor" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B6914;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#A0761A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6B5416;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradient pour la chemise bleue -->
+    <linearGradient id="shirtBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#B8D4F0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#A3C7E8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8BB5DE;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Ombres et highlights -->
+    <radialGradient id="faceShading" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" style="stop-color:rgba(0,0,0,0);stop-opacity:0" />
+      <stop offset="80%" style="stop-color:rgba(0,0,0,0);stop-opacity:0" />
+      <stop offset="100%" style="stop-color:rgba(139,105,20,0.15);stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Fond -->
+  <rect width="300" height="300" fill="url(#bgGradient)"/>
+  
+  <!-- Corps/Épaules -->
+  <path d="M50 250 Q50 240 60 235 L80 225 Q100 220 150 220 Q200 220 220 225 L240 235 Q250 240 250 250 L250 300 L50 300 Z" 
+        fill="url(#shirtBlue)" stroke="#7BA3D1" stroke-width="1"/>
+  
+  <!-- Col de la chemise -->
+  <path d="M120 220 Q150 215 180 220 L175 235 Q150 230 125 235 Z" 
+        fill="#FFFFFF" stroke="#A3C7E8" stroke-width="1"/>
+  
+  <!-- Boutons de chemise -->
+  <circle cx="150" cy="240" r="2" fill="#FFFFFF" stroke="#A3C7E8" stroke-width="0.5"/>
+  <circle cx="150" cy="255" r="2" fill="#FFFFFF" stroke="#A3C7E8" stroke-width="0.5"/>
+  <circle cx="150" cy="270" r="2" fill="#FFFFFF" stroke="#A3C7E8" stroke-width="0.5"/>
+  
+  <!-- Cou -->
+  <rect x="135" y="200" width="30" height="25" fill="url(#skinTone)" rx="15"/>
+  
+  <!-- Visage -->
+  <ellipse cx="150" cy="140" rx="45" ry="55" fill="url(#skinTone)"/>
+  
+  <!-- Shading du visage -->
+  <ellipse cx="150" cy="140" rx="45" ry="55" fill="url(#faceShading)"/>
+  
+  <!-- Cheveux - partie principale -->
+  <path d="M110 95 Q115 75 130 70 Q145 65 150 65 Q155 65 170 70 Q185 75 190 95 
+           L190 120 Q188 110 180 105 Q170 95 150 95 Q130 95 120 105 Q112 110 110 120 Z" 
+        fill="url(#hairColor)"/>
+  
+  <!-- Cheveux - côtés -->
+  <ellipse cx="115" cy="110" rx="8" ry="15" fill="url(#hairColor)" transform="rotate(-15 115 110)"/>
+  <ellipse cx="185" cy="110" rx="8" ry="15" fill="url(#hairColor)" transform="rotate(15 185 110)"/>
+  
+  <!-- Cheveux - mèches devant -->
+  <path d="M125 95 Q130 90 135 95 Q132 100 128 98" fill="url(#hairColor)"/>
+  <path d="M165 95 Q170 90 175 95 Q172 100 168 98" fill="url(#hairColor)"/>
+  
+  <!-- Sourcils -->
+  <path d="M125 120 Q135 118 145 120" stroke="#6B5416" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M155 120 Q165 118 175 120" stroke="#6B5416" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- Yeux -->
+  <ellipse cx="135" cy="130" rx="8" ry="5" fill="#FFFFFF"/>
+  <ellipse cx="165" cy="130" rx="8" ry="5" fill="#FFFFFF"/>
+  
+  <!-- Iris -->
+  <circle cx="135" cy="130" r="4" fill="#4A5D23"/>
+  <circle cx="165" cy="130" r="4" fill="#4A5D23"/>
+  
+  <!-- Pupilles -->
+  <circle cx="135" cy="130" r="2" fill="#000000"/>
+  <circle cx="165" cy="130" r="2" fill="#000000"/>
+  
+  <!-- Reflets dans les yeux -->
+  <circle cx="136" cy="128" r="1" fill="#FFFFFF"/>
+  <circle cx="166" cy="128" r="1" fill="#FFFFFF"/>
+  
+  <!-- Cils -->
+  <path d="M128 126 Q135 124 142 126" stroke="#000000" stroke-width="1" fill="none"/>
+  <path d="M158 126 Q165 124 172 126" stroke="#000000" stroke-width="1" fill="none"/>
+  
+  <!-- Nez -->
+  <path d="M148 140 Q150 145 152 140" stroke="rgba(139,105,20,0.3)" stroke-width="1.5" fill="none"/>
+  <ellipse cx="147" cy="147" rx="1.5" ry="1" fill="rgba(139,105,20,0.2)"/>
+  <ellipse cx="153" cy="147" rx="1.5" ry="1" fill="rgba(139,105,20,0.2)"/>
+  
+  <!-- Bouche -->
+  <path d="M140 160 Q150 167 160 160" stroke="#C44569" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M145 163 Q150 165 155 163" stroke="#E85A4F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- Joues (léger rougissement) -->
+  <circle cx="120" cy="145" r="8" fill="rgba(228,90,79,0.15)"/>
+  <circle cx="180" cy="145" r="8" fill="rgba(228,90,79,0.15)"/>
+  
+  <!-- Boucles d'oreilles -->
+  <circle cx="105" cy="135" r="3" fill="#FFD700" stroke="#E6C200" stroke-width="0.5"/>
+  <circle cx="195" cy="135" r="3" fill="#FFD700" stroke="#E6C200" stroke-width="0.5"/>
+  
+  <!-- Ombres subtiles -->
+  <path d="M110 140 Q150 175 190 140" stroke="rgba(139,105,20,0.1)" stroke-width="1" fill="none"/>
+</svg>
