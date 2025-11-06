@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Farah HMIDA - Portfolio Développeuse Full Stack & IA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --secondary: #8b5cf6;
+      --accent: #06b6d4;
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-card: #334155;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #64748b;
+      --border: #475569;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: var(--bg-primary); 
+      color: var(--text-primary); 
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    .container { 
+      max-width: 1200px; 
+      margin: 0 auto; 
+      padding: 0 2rem; 
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%233b82f6" stop-opacity="0.1"/><stop offset="100%" stop-color="%233b82f6" stop-opacity="0"/></radialGradient></defs><circle cx="50%" cy="50%" r="500" fill="url(%23a)"/></svg>');
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .hero .location {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .contact-links a:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+    }
+
+    /* Sections */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* Education */
+    .education-grid {
+      display: grid;
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .education-item {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: 1rem;
+      border-left: 4px solid var(--primary);
+      transition: transform 0.3s ease;
+    }
+
+    .education-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .education-item h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .education-item .institution {
+      color: var(--text-secondary);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .education-item .date {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Experience */
+    .experience-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .experience-item {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .experience-item:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .experience-item h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .company {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    .date-location {
+      text-align: right;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .experience-description {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .experience-description ul {
+      margin-left: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-card h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-description {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tech-tag {
+      background: var(--bg-card);
+      color: var(--accent);
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .project-date {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-category h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-item {
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .skill-item:hover {
+      background: var(--primary);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-secondary);
+      text-align: center;
+      padding: 3rem 0;
+      margin-top: 5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-content {
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .contact-links {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .experience-header {
+        flex-direction: column;
+      }
+      
+      .date-location {
+        text-align: left;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.6s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Farah HMIDA</h1>
+      <p>Développeuse Full Stack | IA & DevOps</p>
+      <div class="links">
+        <a href="mailto:farah.hmida@esprit.tn">Email</a> |
+        <a href="https://linkedin.com/in/farah-hmida-568570277" target="_blank">LinkedIn</a> |
+        <a href="https://github.com/farah699" target="_blank">GitHub</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>À propos</h2>
+      <p>Étudiante en cycle d’ingénieur à ESPRIT, passionnée par l’<strong>IA générative</strong>, la <strong>vision par ordinateur</strong> et le <strong>DevOps</strong>. J’ai développé des applications full stack et des projets IA appliqués à la santé, l’éducation et l’agriculture.</p>
+    </section>
+
+    <section>
+      <h2>Projets clés</h2>
+
+      <div class="project">
+        <h3>EduIA – Plateforme IA pédagogique</h3>
+        <p>Génération automatique de QCM, textes à trous et contenus visuels avec <span class="tech">Stable Diffusion, Transformers, Whisper</span>.</p>
+        <p><em>Django | Python | MongoDB | NLP</em></p>
+      </div>
+
+      <div class="project">
+        <h3>Alvia Smile AI (en cours – PFE)</h3>
+        <p>Moteur IA générant des simulations dentaires avant/après à partir d’une photo.</p>
+        <p><em>PyTorch | Stable Diffusion | FastAPI | React | FFMPEG</em></p>
+      </div>
+
+      <div class="project">
+        <h3>Bibliothèque en ligne – Microservices IA</h3>
+        <p>Recommandations intelligentes, réservations automatisées.</p>
+        <p><em>Spring Boot | Node.js | RabbitMQ | Docker | Stripe</em></p>
+      </div>
+
+      <div class="project">
+        <h3>UniMindCare – Santé mentale étudiante</h3>
+        <p>Suivi psychologique, tests IA, communauté.</p>
+        <p><em>MERN Stack | ML | Docker | Jenkins</em></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Compétences</h2>
+      <p><strong>Langages :</strong> Python, JavaScript, TypeScript, Java, PHP<br>
+         <strong>IA :</strong> PyTorch, Stable Diffusion, Transformers, Vision IA<br>
+         <strong>DevOps :</strong> Docker, GitHub Actions, Jenkins, Prometheus, Grafana<br>
+         <strong>Full Stack :</strong> React, Node.js, Django, Laravel, Symfony, MERN</p>
+    </section>
+
+    <footer>
+      <p>Portfolio créé avec ❤️ | <a href="https://github.com/farah699/farah699.github.io" style="color:#60a5fa">Voir le code source</a></p>
+    </footer>
+  </div>
+</body>
+</html>
